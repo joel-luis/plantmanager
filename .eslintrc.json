@@ -30,6 +30,8 @@
         "prettier/prettier": "error",
         "@typescript-eslint/explicit-module-boundary-types": "off",
         "react-hooks/exhaustive-deps": "warn",
+        "camelcase": "off",
+        "react/jsx-props-no-spreading": "off",
         "react/jsx-filename-extension": [
             1,
             {

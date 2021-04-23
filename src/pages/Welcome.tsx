@@ -1,52 +1,93 @@
 /* eslint-disable @typescript-eslint/no-use-before-define */
 import React from 'react';
-import { Text, SafeAreaView, Image, StyleSheet } from 'react-native';
-import Button from '../components/Button';
+import {
+  Text,
+  SafeAreaView,
+  Image,
+  StyleSheet,
+  TouchableOpacity,
+  Dimensions,
+} from 'react-native';
 
+import { Feather } from '@expo/vector-icons';
+
+import { useNavigation } from '@react-navigation/core';
 import wateringImg from '../assets/watering.png';
 import colors from '../styles/colors';
+import fonts from '../styles/fonts';
 
-// eslint-disable-next-line import/prefer-default-export
 export function Welcome() {
+  const navigation = useNavigation();
+
+  function handleStart() {
+    navigation.navigate('UserIdentification');
+  }
+
   return (
     <SafeAreaView style={styles.container}>
       <Text style={styles.title}>
         Gerencie {'\n'}
-        suas plantas {'\n'}
-        de forma fácil
+        suas plantas de {'\n'}
+        forma fácil
       </Text>
-      <Image source={wateringImg} style={styles.img} />
+
+      <Image source={wateringImg} style={styles.img} resizeMode="contain" />
+
       <Text style={styles.subtitle}>
         Não esqueça mais de regar suas plantas. Nós cuidamos de lembrar você
         sempre que precisar.
       </Text>
-      <Button title="Avançar" />
+
+      <TouchableOpacity
+        style={styles.button}
+        activeOpacity={0.7}
+        onPress={handleStart}
+      >
+        <Feather name="chevron-right" style={styles.buttonIcon} />
+      </TouchableOpacity>
     </SafeAreaView>
   );
 }
+
+export default Welcome;
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
     marginTop: 20,
     alignItems: 'center',
-    justifyContent: 'space-between',
+    justifyContent: 'space-around',
   },
   title: {
-    fontSize: 32,
-    fontWeight: 'bold',
+    fontSize: 28,
     textAlign: 'center',
     color: colors.heading,
     marginTop: 38,
+    fontFamily: fonts.heading,
+    lineHeight: 34,
   },
   subtitle: {
     textAlign: 'center',
     fontSize: 18,
-    paddingHorizontal: 20,
+    paddingHorizontal: 30,
     color: colors.heading,
+    fontFamily: fonts.text,
   },
   img: {
-    width: 292,
-    height: 284,
+    height: Dimensions.get('window').width * 0.7,
+  },
+  button: {
+    backgroundColor: colors.green,
+    justifyContent: 'center',
+    alignItems: 'center',
+    borderRadius: 16,
+    marginBottom: 10,
+    height: 56,
+    width: 56,
+  },
+
+  buttonIcon: {
+    fontSize: 32,
+    color: colors.white,
   },
 });
