@@ -28,10 +28,15 @@
     "rules": {
         "react-hooks/rules-of-hooks": "error",
         "prettier/prettier": "error",
+        "no-unused-expressions": "off",
         "@typescript-eslint/explicit-module-boundary-types": "off",
         "react-hooks/exhaustive-deps": "warn",
         "camelcase": "off",
+        "consistent-return": "off",
         "react/jsx-props-no-spreading": "off",
+        "react/require-default-props": "off",
+        "@typescript-eslint/no-unused-vars": "off",
+        "onsistent-return": "off",
         "react/jsx-filename-extension": [
             1,
             {
@@ -42,7 +47,7 @@
         ],
         "no-use-before-define": "off",
         "@typescript-eslint/no-use-before-define": [
-            "error"
+            "off"
         ],
         "react/react-in-jsx-scope": "off",
         "import/extensions": [

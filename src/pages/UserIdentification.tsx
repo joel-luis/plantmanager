@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-use-before-define */
 import React, { useState } from 'react';
 import {
   SafeAreaView,
@@ -7,7 +6,9 @@ import {
   View,
   TextInput,
   KeyboardAvoidingView,
+  TouchableWithoutFeedback,
   Platform,
+  Keyboard,
 } from 'react-native';
 import { useNavigation } from '@react-navigation/core';
 import colors from '../styles/colors';
@@ -46,30 +47,32 @@ export function UserIdentification() {
         style={styles.container}
         behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
       >
-        <View style={styles.content}>
-          <View style={styles.form}>
-            <View style={styles.header}>
-              <Text style={styles.emoji}>{isFilled ? '😄' : '😃'}</Text>
-              <Text style={styles.title}>
-                Como podemos {'\n'}
-                chamar você
-              </Text>
-            </View>
-            <TextInput
-              style={[
-                styles.input,
-                (isFocused || isFilled) && { borderColor: colors.green },
-              ]}
-              placeholder="Digite um nome"
-              onBlur={handleInputBlur}
-              onFocus={handleInputFocus}
-              onChangeText={handleInputChange}
-            />
-            <View style={styles.footer}>
-              <Button title="Confirmar" onPress={handleSubmit} />
+        <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+          <View style={styles.content}>
+            <View style={styles.form}>
+              <View style={styles.header}>
+                <Text style={styles.emoji}>{isFilled ? '😄' : '😃'}</Text>
+                <Text style={styles.title}>
+                  Como podemos {'\n'}
+                  chamar você?
+                </Text>
+              </View>
+              <TextInput
+                style={[
+                  styles.input,
+                  (isFocused || isFilled) && { borderColor: colors.green },
+                ]}
+                placeholder="Digite um nome"
+                onBlur={handleInputBlur}
+                onFocus={handleInputFocus}
+                onChangeText={handleInputChange}
+              />
+              <View style={styles.footer}>
+                <Button title="Confirmar" onPress={handleSubmit} />
+              </View>
             </View>
           </View>
-        </View>
+        </TouchableWithoutFeedback>
       </KeyboardAvoidingView>
     </SafeAreaView>
   );
