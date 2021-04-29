@@ -1,8 +1,9 @@
 import { Feather } from '@expo/vector-icons';
 import React from 'react';
-import { StyleSheet, Text, View, Animated } from 'react-native';
 
+import { StyleSheet, Text, View, Animated } from 'react-native';
 import { RectButton, RectButtonProps } from 'react-native-gesture-handler';
+
 import Swipeable from 'react-native-gesture-handler/Swipeable';
 import { SvgFromUri } from 'react-native-svg';
 
